@@ -13,7 +13,7 @@ contract Blacklist is BlacklistInterface, Ownable {
      */
     function blacklist(bytes32 node) public onlyOwner {
         blacklisted[node] = true;
-        Blacklisted(node);
+        emit Blacklisted(node);
     }
     
     /** 
@@ -22,7 +22,7 @@ contract Blacklist is BlacklistInterface, Ownable {
      */
     function unblacklist(bytes32 node) public onlyOwner {
         blacklisted[node] = false;
-        Unblacklisted(node);
+        emit Unblacklisted(node);
     }
     
     /**
@@ -33,3 +33,4 @@ contract Blacklist is BlacklistInterface, Ownable {
         return !blacklisted[node];
     }
 }
+
